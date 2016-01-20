@@ -30,6 +30,8 @@
 #include <sched.h>
 #include <boost/any.hpp>
 
+namespace seastar {
+
 cpu_set_t cpuid_to_cpuset(unsigned cpuid);
 
 namespace resource {
@@ -78,7 +80,8 @@ struct resources {
 
 resources allocate(configuration c);
 unsigned nr_processing_units();
-}
+} // namespace resource
+
 
 // We need a wrapper class, because boost::program_options wants validate()
 // (below) to be in the same namespace as the type it is validating.
@@ -91,4 +94,7 @@ extern
 void validate(boost::any& v,
               const std::vector<std::string>& values,
               cpuset_bpo_wrapper* target_type, int);
+
+} // namespace seastar
+
 #endif /* RESOURCE_HH_ */

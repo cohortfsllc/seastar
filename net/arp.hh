@@ -30,6 +30,7 @@
 #include "core/print.hh"
 #include <unordered_map>
 
+namespace seastar {
 namespace net {
 
 class arp;
@@ -260,6 +261,7 @@ arp_for<L3>::handle_request(arp_hdr* ah) {
     return make_ready_future<>();
 }
 
-}
+} // namespace net
+} // namespace seastar
 
 #endif /* ARP_HH_ */

@@ -41,6 +41,7 @@
 #include "util/defer.hh"
 
 using namespace std::chrono_literals;
+using namespace seastar;
 
 bool filesystem_has_good_aio_support(sstring directory, bool verbose);
 

@@ -33,6 +33,7 @@
 #include "const.hh"
 #include <unordered_map>
 
+namespace seastar {
 namespace net {
 
 class packet;
@@ -293,6 +294,7 @@ public:
     }
 };
 
-}
+} // namespace net
+} // namespace seastar
 
 #endif /* NET_HH_ */

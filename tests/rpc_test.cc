@@ -25,6 +25,8 @@
 #include "test-utils.hh"
 #include "core/thread.hh"
 
+namespace seastar {
+
 struct serializer {
 };
 
@@ -111,4 +113,6 @@ SEASTAR_TEST_CASE(test_rpc_connect) {
             BOOST_REQUIRE_EQUAL(result, 2 + 3);
         });
     });
+}
+
 }

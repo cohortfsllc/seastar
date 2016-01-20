@@ -28,9 +28,10 @@
 
 namespace bpo = boost::program_options;
 
-using namespace httpd;
+using namespace seastar;
+using namespace seastar::httpd;
 
-class handl : public httpd::handler_base {
+class handl : public seastar::httpd::handler_base {
 public:
     virtual future<std::unique_ptr<reply> > handle(const sstring& path,
             std::unique_ptr<request> req, std::unique_ptr<reply> rep) {

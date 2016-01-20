@@ -31,6 +31,8 @@
 #include <cstdlib>
 #include <type_traits>
 
+using namespace seastar;
+
 // Runs func(), and also adds the number of context switches
 // that happened during func() to counter.
 template <typename Counter, typename Func>

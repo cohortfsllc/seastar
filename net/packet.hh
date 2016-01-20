@@ -31,6 +31,7 @@
 #include <iosfwd>
 #include <experimental/optional>
 
+namespace seastar {
 namespace net {
 
 struct fragment {
@@ -602,6 +603,7 @@ packet packet::share(size_t offset, size_t len) {
     return n;
 }
 
-}
+} // namespace net
+} // namespace seastar
 
 #endif /* PACKET_HH_ */

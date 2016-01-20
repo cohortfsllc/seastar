@@ -75,6 +75,8 @@
 #include <osv/newpoll.hh>
 #endif
 
+namespace seastar {
+
 using shard_id = unsigned;
 
 namespace scollectd { class registration; }
@@ -189,6 +191,7 @@ private:
     std::unique_ptr<pollable_fd_state> _s;
 };
 
+} // namespace seastar
 
 namespace std {
 
@@ -202,6 +205,8 @@ struct hash<::sockaddr_in> {
 }
 
 bool operator==(const ::sockaddr_in a, const ::sockaddr_in b);
+
+namespace seastar {
 
 class network_stack_registrator {
 public:
@@ -1344,5 +1349,7 @@ inline
 typename timer<Clock>::time_point timer<Clock>::get_timeout() {
     return _expiry;
 }
+
+} // namespace seastar
 
 #endif /* REACTOR_HH_ */

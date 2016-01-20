@@ -25,6 +25,8 @@
 #include "resource.hh"
 #include "core/align.hh"
 
+namespace seastar {
+
 // Overload for boost program options parsing/validation
 void validate(boost::any& v,
               const std::vector<std::string>& values,
@@ -82,7 +84,9 @@ size_t calculate_memory(configuration c, size_t available_memory, float panic_fa
     return mem;
 }
 
-}
+} // namespace resource
+
+} // namespace seastar
 
 #ifdef HAVE_HWLOC
 
@@ -91,6 +95,8 @@ size_t calculate_memory(configuration c, size_t available_memory, float panic_fa
 #include <hwloc.h>
 #include <unordered_map>
 #include <boost/range/irange.hpp>
+
+namespace seastar {
 
 cpu_set_t cpuid_to_cpuset(unsigned cpuid) {
     cpu_set_t cs;
@@ -330,13 +336,16 @@ unsigned nr_processing_units() {
     return hwloc_get_nbobjs_by_type(topology, HWLOC_OBJ_PU);
 }
 
-}
+} // namespace resource
+
+} // namespace seastar
 
 #else
 
 #include "resource.hh"
 #include <unistd.h>
 
+namespace seastar {
 namespace resource {
 
 // Without hwloc, we don't support tuning the number of IO queues. So each CPU gets their.
@@ -379,6 +388,8 @@ unsigned nr_processing_units() {
     return ::sysconf(_SC_NPROCESSORS_ONLN);
 }
 
-}
+} // namespace resource
+
+} // namespace seastar
 
 #endif

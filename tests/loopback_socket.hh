@@ -29,6 +29,8 @@
 #include "core/do_with.hh"
 #include "net/stack.hh"
 
+namespace seastar {
+
 class loopback_buffer {
     bool _aborted = false;
     queue<temporary_buffer<char>> _q{1};
@@ -159,3 +161,5 @@ public:
         });
     }
 };
+
+}
